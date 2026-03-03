@@ -1,0 +1,330 @@
+:root {
+    --dark: #19191D;
+    --gray: #696871;
+    --underlinecolor: #23A9F2;
+    --discord: #5865F2;
+} 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+h1, p {
+    color: var(--dark);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+.logo {
+    max-width: 150px;
+}
+
+.header {
+    padding-block: 15px;
+    padding-inline: 25px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 0px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.9px);
+    -webkit-backdrop-filter: blur(4.9px);
+}
+
+.header__container {
+    margin-inline: auto;
+    max-width: 100%;
+}
+.header__nav {
+    display: flex;
+    justify-content: space-between;
+}
+.header__list {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.header__list-link {
+    font-weight: 700;
+    letter-spacing: -0.47px;
+    color: var(--gray);
+    transition: color 0.3s;
+}
+.header__list-link.active {
+    color: var(--dark);
+    border-bottom: 2px solid var(--underlinecolor);
+    padding-bottom: 3.14159265358979323846264338327950288419716939937510px;
+}
+.header__list-link:hover {
+    color: var(--dark);
+}
+.header__button {
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    padding: 10px 40px;
+    background: linear-gradient(45deg, var(--discord), #FBA0E3);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.header__button:hover {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(88, 101, 242, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(88, 101, 242, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(88, 101, 242, 0);
+    }
+}
+
+.hero {
+    padding-block: 100px;
+}
+
+.hero__container {
+    width: 750px;
+    height: 225px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 70px;
+
+}
+.hero__avatar {
+    width: 225px;
+    height: 225px;
+    border-radius: 5px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero__text {
+    font-weight: 700;
+    font-family: Verdana, sans-serif;
+}
+
+.hero__title {
+    font-size: 45px;
+    margin: 0 0 4px;
+    background: linear-gradient(145deg, #0D2B45, #B45E2E, #0D2B45);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+    background-size: 100% 300%;
+    animation: h1gra 2.5s linear infinite;
+}
+
+.hero__title-alt {
+    margin: 0 0 4px;
+    background: linear-gradient(145deg, #0D2B45, #B45E2E, #0D2B45);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+    background-size: 100% 300%;
+    animation: h1gra 2.5s linear infinite;
+}
+
+@keyframes h1gra {
+    0% {
+        background-position: 50% 0%;
+    }
+    50% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 50% 0%;
+    }
+}
+
+.hero__desc {
+    font-size: 25px;
+    color: var(--dark);
+}
+
+.hero__list {
+    padding-block: 15px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding-left: 0; 
+}
+
+
+.hero__list-link {
+    width: 50px;
+    height: 50px; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60% 60%;
+}
+
+.hero__list-link:hover {
+    opacity: 1;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.9);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60% 60%;
+}
+
+.hero__list-link-ds, .hero__list-link-tg, .hero__list-link-gh, .hero__list-link-yt, .hero__list-link-st, hero__list-link-info {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60% 60%;
+}
+
+.hero__list-link-ds {
+    background-image: url('images/social/ds.svg');
+}
+.hero__list-link-tg {
+    background-image: url('images/social/tg.svg');
+}
+.hero__list-link-gh {
+    background-image: url('images/social/gh.svg');
+}
+.hero__list-link-yt {
+    background-image: url('images/social/yt.svg');
+}
+.hero__list-link-st {
+    background-image: url('images/social/st.svg');
+}
+.hero__list-link-info {
+    background-image: url('images/social/info.svg');
+}
+
+.main {
+    padding-block: 100px;
+}
+
+.main__content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 45px;
+} 
+
+.main__container {
+    width: 1035px;
+    height: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main__avatar {
+    width: 210px;
+    height: 210px;
+    border-radius: 5px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.main__title {
+    margin: 0;
+}
+
+.main__text-content {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column; /* Добавляем, чтобы элементы шли вертикально */
+    padding: 15px; /* Вместо padding-block используем padding */
+    margin-top: 20px;
+    max-height: 212px;
+}
+
+.main__desc {
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.main__desc p {
+    margin: 0; 
+}
+
+.backgr {
+    height: 100vh;
+    background-image: url('images/bg/8.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+
+.background {
+    height: 100vh;
+    background-image: url('images/bg/5.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
