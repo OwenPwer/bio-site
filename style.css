@@ -258,7 +258,7 @@ body {
     display: inline-block;
 }
 
-.hero__text:hover .hero__desc::after {
+.hero__text:hover {
     width: 100%;
 }
 
@@ -475,11 +475,6 @@ body {
         justify-content: center;
     }
 
-    .hero__desc::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
     .about__card {
         grid-template-columns: 1fr;
         text-align: center;
@@ -542,7 +537,6 @@ body {
     .hero__avatar,
     .hero__list-link,
     .hero__title,
-    .hero__desc::after,
     .about__card,
     .about__avatar,
     .header__button,
