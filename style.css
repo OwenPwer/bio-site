@@ -258,18 +258,6 @@ body {
     display: inline-block;
 }
 
-/* подчеркивание при наведении */
-.hero__desc::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--discord), #FBA0E3);
-    transition: width 0.3s ease;
-}
-
 .hero__text:hover .hero__desc::after {
     width: 100%;
 }
