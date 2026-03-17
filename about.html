@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>About | Owen Pers</title>
+    <meta name="description" content="Обо мне - Owen Yaku Pers, начинающий UI/UX дизайнер">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <nav class="header__nav">
+                <img src="images/LOGO.svg" 
+                     alt="OwenPers logo" 
+                     class="logo"
+                     title="На главную">
+                <a href="index.html" 
+                   class="header__button" 
+                   title="Вернуться на главную">
+                    Back
+                </a>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="about" aria-labelledby="about-title">
+            <div class="about__container">
+                <div class="about__card">
+                    <!-- аватарка с запасным фоном на всякий случай -->
+                    <img src="images/avatar/nerd.jpg" 
+                         class="about__avatar" 
+                         alt="Owen Yaku Pers avatar"
+                         loading="lazy"
+                         onerror="this.style.backgroundColor='#5865F2'">
+                    
+                    <div class="about__content">
+                        <h1 class="about__title" id="about-title">
+                            Owen Yaku Pers, 15 y.o
+                        </h1>
+                        
+                        <div class="about__bio">
+                            <p class="about__text">
+                                Hello! My name is Owen Yaku Pers. I'm a 15-year-old beginner UI/UX designer. <br>
+                                My personality typology: MBTI [ESFP (Artist)]; Enneagram [3w2, sx/sp, 379]. <br>
+                                My sex, gender, and pronouns: male, straight, he/him. <br>
+                                My birthday is May 31st. My favorite time of year is winter. <br>
+                            </p>
+                        </div>
+
+                        <!-- добавил небольшую подпись, чисто для души -->
+                        <p class="about__signature">
+                            An exit-door procedure at 30.000 feet. Mm-hmm. The illusion of safety. - Tyler Durden
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- фон подгружается из CSS, но на всякий случай оставил комментарий -->
+    <!-- фон: images/bg/5.jpg с фильтрами -->
+</body>
+</html>

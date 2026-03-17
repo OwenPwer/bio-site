@@ -1,0 +1,625 @@
+:root {
+    --dark: #19191D;
+    --gray: #696871;
+    --underlinecolor: #23A9F2;
+    --discord: #5865F2;
+} 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* чтобы padding не ломал верстку */
+}
+
+/* экспериментировал с переходами между страницами */
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+/* базовые стили */
+h1, p {
+    color: var(--dark);
+}
+
+a {
+    text-decoration: none; /* убрал подчеркивание, надоело */
+}
+
+ul {
+    list-style: none; /* убираем точки у списков */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background-image: url('images/bg/lmao.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* чет прикольный фон получился */
+}
+
+/* ===== ШАПКА ===== */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100; /* чтобы быть поверх всего */
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px); /* матовое стекло */
+    -webkit-backdrop-filter: blur(10px); /* для Safari */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header__container {
+    margin-inline: auto;
+    max-width: 100%;
+}
+
+.header__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* меню на будущее, пока не используется */
+.header__list {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.header__list-link {
+    font-weight: 700;
+    letter-spacing: -0.47px; /* подогнал на глаз */
+    color: var(--gray);
+    transition: color 0.3s;
+}
+
+.header__list-link.active {
+    color: var(--dark);
+    border-bottom: 2px solid var(--underlinecolor);
+    padding-bottom: 3.1415926px; /* было смешное число пи, сократил */
+}
+
+.header__list-link:hover {
+    color: var(--dark);
+}
+
+/* кнопка "About me" / "Back" */
+.header__button {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: white;
+    padding: 10px 30px;
+    background: linear-gradient(135deg, var(--discord), #FBA0E3); /* градиент залипательный */
+    border-radius: 15px; /* скруглим побольше */
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.header__button:hover {
+    box-shadow: 0 5px 20px rgba(88, 101, 242, 0.4);
+    animation: pulse 1.5s infinite; /* пульсация при наведении */
+}
+
+.header__button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+/* ===== ЛОГОТИП ===== */
+.logo {
+    max-width: 150px;
+    height: auto;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.8; /* чуть прозрачнее */
+}
+
+/* ===== АНИМАЦИИ ===== */
+/* пульсация для кнопки */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(88, 101, 242, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(88, 101, 242, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(88, 101, 242, 0); }
+}
+
+/* старая анимация для заголовка, пока оставил */
+@keyframes h1gra {
+    0% { background-position: 50% 0%; }
+    50% { background-position: 50% 100%; }
+    100% { background-position: 50% 0%; }
+}
+
+/* новая анимация для градиента */
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* появление главного блока */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* ===== ГЛАВНАЯ СТРАНИЦА ===== */
+.hero {
+    padding-block: 100px;
+    position: relative;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+}
+
+/* основной контейнер с аватаркой */
+.hero__container {
+    width: min(750px, 90%);
+    height: auto;
+    min-height: 225px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    animation: fadeInScale 0.6s ease-out;
+}
+
+.hero__container:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* аватарка */
+.hero__avatar {
+    width: 225px;
+    height: 225px;
+    border-radius: 15px;
+    object-fit: cover; /* чтобы не растягивалась */
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.hero__avatar:hover {
+    transform: scale(1.02) rotate(1deg); /* легкое вращение */
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero__content {
+    flex: 1;
+}
+
+.hero__text {
+    font-weight: 700;
+    font-family: 'Segoe UI', Verdana, sans-serif;
+    margin-bottom: 20px;
+}
+
+/* заголовок с градиентом */
+.hero__title {
+    font-size: clamp(32px, 5vw, 45px); /* адаптивный размер */
+    margin: 0 0 8px;
+    background: linear-gradient(145deg, #0D2B45, #B45E2E, #0D2B45);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% 200%;
+    animation: gradientFlow 4s ease infinite;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+}
+
+/* альтернативный заголовок (для about) */
+.hero__title-alt {
+    margin: 0 0 4px;
+    background: linear-gradient(145deg, #0D2B45, #B45E2E, #0D2B45);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+    background-size: 100% 300%;
+    animation: h1gra 2.5s linear infinite;
+}
+
+/* описание */
+.hero__desc {
+    font-size: clamp(18px, 3vw, 25px);
+    color: var(--dark);
+    margin: 0;
+    opacity: 0.9;
+    position: relative;
+    display: inline-block;
+}
+
+/* подчеркивание при наведении */
+.hero__desc::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--discord), #FBA0E3);
+    transition: width 0.3s ease;
+}
+
+.hero__text:hover .hero__desc::after {
+    width: 100%;
+}
+
+/* ===== СОЦИАЛЬНЫЕ ИКОНКИ ===== */
+.hero__list {
+    padding-block: 15px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding-left: 0;
+    margin: 0;
+    flex-wrap: wrap; /* чтобы на мобилке переносились */
+}
+
+.hero__list-item {
+    list-style: none;
+}
+
+/* базовый стиль для всех иконок */
+.hero__list-link {
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60% 60%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* эффект волны при наведении */
+.hero__list-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.hero__list-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    background-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero__list-link:hover::before {
+    width: 100px;
+    height: 100px;
+}
+
+.hero__list-link:active {
+    transform: translateY(-2px) scale(0.95);
+}
+
+.hero__list-link:focus-visible {
+    outline: 2px solid var(--discord);
+    outline-offset: 2px;
+    transform: scale(1.05);
+}
+
+/* иконки соцсетей */
+.hero__list-link-ds {
+    background-image: url('images/social/ds.svg');
+}
+.hero__list-link-tg {
+    background-image: url('images/social/tg.svg');
+}
+.hero__list-link-gh {
+    background-image: url('images/social/gh.svg');
+}
+.hero__list-link-yt {
+    background-image: url('images/social/yt.svg');
+}
+.hero__list-link-st {
+    background-image: url('images/social/st.svg');
+}
+.hero__list-link-info {
+    background-image: url('images/social/info.svg');
+}
+
+/* ===== СТРАНИЦА "О СЕБЕ" ===== */
+.about {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.about__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.about__card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    transition: transform 0.3s ease;
+    align-items: stretch; /* чтобы дочерние элементы растягивались на всю высоту */
+}
+
+.about__avatar {
+    width: 240px;
+    height: 240px;
+    border-radius: 15px;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.about__avatar:hover {
+    transform: scale(1.02);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.about__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    height: 100%;
+}
+
+.about__title {
+    font-size: 32px;
+    margin: 0;
+    background: linear-gradient(130deg,#30CFD0, #330867);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 300% 300%;
+    animation: gradientFlow 4s ease-in-out infinite;
+    font-weight: 700;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.about__bio {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 0;
+}
+
+.about__text {
+    font-size: 19px;
+    line-height: 1.6; /* для читабельности */
+    color: var(--dark);
+    margin: 0 0 10px 0;
+}
+
+.about__text:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== ФОН ===== */
+.background {
+    height: 100vh;
+    background-image: url('images/bg/5.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    filter: brightness(0.9) saturate(1.2); /* чуть настроил цвета */
+    transition: filter 0.3s ease;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+/* планшеты */
+@media (max-width: 768px) {
+    .hero__container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        width: 90%;
+        padding: 25px;
+    }
+
+    .hero__avatar {
+        width: 180px;
+        height: 180px;
+    }
+
+    .hero__list {
+        justify-content: center;
+    }
+
+    .hero__desc::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .about__card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .about__avatar {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+
+    .about__title {
+        font-size: 28px;
+    }
+
+    .about__text {
+        font-size: 16px;
+    }
+}
+
+/* телефоны */
+@media (max-width: 480px) {
+    .hero__container {
+        padding: 20px;
+    }
+
+    .hero__avatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    .hero__list-link {
+        width: 45px;
+        height: 45px;
+    }
+
+    .about {
+        padding: 10px;
+    }
+
+    .about__card {
+        padding: 15px;
+    }
+
+    .about__avatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    .about__title {
+        font-size: 24px;
+    }
+}
+
+/* ===== ДОСТУПНОСТЬ ===== */
+/* для тех, кто не любит анимации */
+@media (prefers-reduced-motion: reduce) {
+    .hero__container,
+    .hero__avatar,
+    .hero__list-link,
+    .hero__title,
+    .hero__desc::after,
+    .about__card,
+    .about__avatar,
+    .header__button,
+    .logo {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* темная тема
+@media (prefers-color-scheme: dark) {
+    .hero__container,
+    .about__card {
+        background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero__desc,
+    .about__text {
+        color: #ffffff;
+    }
+    
+    .hero__list-link {
+        background: rgba(0, 0, 0, 0.3);
+    }
+} */
+
+/* чет еще хотел добавить, но забыл... */
+
+/* мелочи для about страницы */
+.about__signature {
+    font-size: 14px;
+    color: var(--dark);
+    margin-top: 10px;
+    font-style: italic;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.about__signature:hover {
+    opacity: 1;
+}
+
+/* для мобильных переносов */
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-only {
+        display: block; /* или inline, зависит от контекста */
+        height: 0;
+        margin: 0;
+    }
+}
+
+/* если аватарка не загрузилась */
+.about__avatar[style*="background-color"] {
+    background-size: cover;
+    background-position: center;
+}
+
+/* эмодзи в тексте */
+.about__text {
+    /* чтобы эмодзи нормально отображались */
+    font-family: 'Segoe UI', 'Apple Color Emoji', 'BlinkMacSystemFont', 
+                 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+}
