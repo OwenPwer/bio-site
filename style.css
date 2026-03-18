@@ -605,3 +605,25 @@ body {
                  'Helvetica Neue', sans-serif;
     font-weight: 700;
 }
+
+.colorus {
+    background: linear-gradient(30deg, #ec6d18, #ffe9a3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 300% 300%;
+    animation: gradientFlow 8s ease-in-out infinite;
+    font-weight: 700;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.yaku {
+    background: linear-gradient(10deg, #8b0000, var(--dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 300% 300%;
+    animation: gradientFlow 8s ease-in-out infinite;
+    font-weight: 700;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
